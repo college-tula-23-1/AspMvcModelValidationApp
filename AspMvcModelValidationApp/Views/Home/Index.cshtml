@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <ul>
+        @foreach(var e in Model)
+        {
+            <li>@e.Name (@e.Age)</li>
+        }
+    </ul>
+</div>

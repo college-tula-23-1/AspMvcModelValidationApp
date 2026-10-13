@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model Employee
+
+<style>
+    .field-validation-error,
+    .validation-summary-errors {
+        color: red;
+    }
+
+    input.input-validation-error{
+        border: 1px solid red;
+    }
+
+    input.valid {
+        border: 1px solid green;
+    }
+</style>
+
+@* @{
+    var ms = (ModelStateDictionary)ViewData["ModelState"];
+}
+
+@if(ms is not null)
+{
+    @foreach (var s in ms)
+    {
+        @if (s.Value.ValidationState == ModelValidationState.Invalid)
+        {
+            <p>Error for @s.Key</p>
+            @foreach (var error in s.Value.Errors)
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        }
+    }
+} *@
+
+
+
+<h4>Employee Info:</h4>
+<form method="post">
+    <div>
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Age">Age</label>
+        <input asp-for="Age" />
+        <span asp-validation-for="Age"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div asp-validation-summary="All"></div>
+
+    <div>
+        <button type="submit">Save Employee</button>
+    </div>
+</form>
